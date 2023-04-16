@@ -15,7 +15,6 @@ let canvas;
 	document.addEventListener("mousemove", (event) => {
 		let mouse_x = event.x - Math.floor(bg_width/2);
 		let mouse_y = event.y - Math.floor(bg_height/2);
-		console.log(bg_width + ", " + bg_height);
 		document.body.style.backgroundPosition = `${mouse_x}px ${mouse_y}px`;
 	});
 
