@@ -1,7 +1,6 @@
 
 let canvas;
 
-
 	let bg_width = 0;
 	let bg_height = 0;
 
