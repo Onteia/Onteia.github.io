@@ -1,0 +1,45 @@
+
+body {
+	margin: 0;
+	background-color: rgb(0, 1, 8);
+}
+
+canvas {
+	position: absolute;
+}
+
+.footer {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	color: white;
+	text-align: right;
+	margin: 5px;
+	font-family: "Noto Sans";font-size: 14px;
+	text-shadow:
+		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px  1px 0 #000,
+		1px  1px 0 #000;
+}
+
+.footer .onteia {
+	color: pink;
+}
+.footer .heart {
+	color: red;
+}
+
+a {
+	color: white;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://fonts.gstatic.com/s/notosans/v28/o-0IIpQlx3QUlC5A4PNr5TRA.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
