@@ -87,7 +87,6 @@ canvas.oncontextmenu = function(event) {
 
 window.addEventListener('resize', ensure_in_bounds);
 
-const SEED = "123";
 var rng = new Math.seedrandom(SEED);
 console.log(rng());
 console.log(rng());
