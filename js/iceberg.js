@@ -56,11 +56,13 @@ function draw() {
 
 	// draw the pins
 	IcebergItem.items.forEach(item => {
-		const pin_w = pin.width * PIN_SCALE/zoom;
-		const pin_h = pin.height * PIN_SCALE/zoom;
-		ctx.translate(item.position.x - pin_w/2, item.position.y - pin_h);
-		ctx.drawImage(pin, 0, 0, pin.width, pin.height, 0, 0, pin_w, pin_h);
-		ctx.translate(-(item.position.x - pin_w/2), -(item.position.y - pin_h));
+		if(!item.hidden) {
+			const pin_w = pin.width * PIN_SCALE/zoom;
+			const pin_h = pin.height * PIN_SCALE/zoom;
+			ctx.translate(item.position.x - pin_w/2, item.position.y - pin_h);
+			ctx.drawImage(pin, 0, 0, pin.width, pin.height, 0, 0, pin_w, pin_h);
+			ctx.translate(-(item.position.x - pin_w/2), -(item.position.y - pin_h));
+		}
 	});
 
 	requestAnimationFrame(draw);
@@ -89,7 +91,7 @@ function get_clicked_item(mouse_x, mouse_y) {
 		click_distance >= Math.abs(item.position.x - m_x) &&
 		click_distance >= Math.abs(item.position.y - m_y - (pin.height/2 * PIN_SCALE/zoom))
 	);
-	return (close_to.length > 0) ? close_to[0].item : null;
+	return (close_to.length > 0) ? close_to[0] : null;
 }
 
 canvas.addEventListener('mousedown', (event) => {
@@ -98,11 +100,17 @@ canvas.addEventListener('mousedown', (event) => {
 		x: event.clientX / zoom - offset.x,
 		y: event.clientY / zoom - offset.y,
 	};
-	console.log(get_clicked_item(event.clientX, event.clientY));
 });
 
 canvas.addEventListener('mouseup', (event) => {
 	is_dragging = false;
+	let clicked_item = get_clicked_item(event.clientX, event.clientY);
+	if(clicked_item !== null) {
+		console.log(clicked_item);
+		clicked_item.hide();
+	} else {
+		IcebergItem.unhide_all();
+	}
 });
 
 canvas.addEventListener('mousemove', (event) => {
