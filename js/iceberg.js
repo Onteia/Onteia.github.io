@@ -5,6 +5,7 @@ const OFFSET_START = {x:350,y:207.5};
 const MAX_ZOOM = 10;
 const MIN_ZOOM = 1;
 const PIN_SCALE = 1/7;
+const POPUP_SCALE = 1/2;
 
 const canvas = document.getElementById('iceberg');
 const ctx = canvas.getContext('2d');
@@ -18,19 +19,6 @@ let drag_offset = {x:0,y:0};
 
 let width = window.innerWidth;
 let height = window.innerHeight;
-
-let iceberg_cached = new Image();
-iceberg_cached.src = ICEBERG_CACHED;
-
-let iceberg = new Image();
-iceberg.src = ICEBERG_JPG;
-let loaded = false;
-iceberg.onload = function() {
-	loaded = true;
-}
-
-let pin = new Image();
-pin.src = PIN_PNG;
 
 function draw() {
 	canvas.width = width = window.innerWidth;
@@ -55,6 +43,7 @@ function draw() {
 	}
 
 	// draw the pins
+	let popup_item = null;
 	IcebergItem.items.forEach(item => {
 		if(!item.hidden) {
 			const pin_w = pin.width * PIN_SCALE/zoom;
@@ -62,8 +51,20 @@ function draw() {
 			ctx.translate(item.position.x - pin_w/2, item.position.y - pin_h);
 			ctx.drawImage(pin, 0, 0, pin.width, pin.height, 0, 0, pin_w, pin_h);
 			ctx.translate(-(item.position.x - pin_w/2), -(item.position.y - pin_h));
+		} 
+		if(!item.item.hidden) {
+			popup_item = item;
 		}
 	});
+
+	if(popup_item !== null) {
+		const popup_w = popup.width * POPUP_SCALE/zoom;
+		const popup_h = popup.height * POPUP_SCALE/zoom;
+		ctx.translate(popup_item.position.x - popup_w/2, popup_item.position.y - popup_h);
+		ctx.drawImage(popup, 0, 0, popup.width, popup.height, 0, 0, popup_w, popup_h);
+		ctx.translate(-(popup_item.position.x - popup_w/2), -(popup_item.position.y - popup_h));
+	}
+
 
 	requestAnimationFrame(draw);
 }
@@ -106,11 +107,9 @@ canvas.addEventListener('mouseup', (event) => {
 	is_dragging = false;
 	let clicked_item = get_clicked_item(event.clientX, event.clientY);
 	if(clicked_item !== null) {
-		console.log(clicked_item);
-		clicked_item.hide();
-	} else {
-		IcebergItem.unhide_all();
+		clicked_item.click();
 	}
+
 });
 
 canvas.addEventListener('mousemove', (event) => {
@@ -137,7 +136,12 @@ canvas.oncontextmenu = function(event) {
 }
 
 window.addEventListener('resize', ensure_in_bounds);
+window.addEventListener('keydown', (event) => {
+	const ESCAPE_KEY = "27";
+	if(event.keyCode == ESCAPE_KEY) {
+		IcebergItem.unhide_all();
+	}
+});
 
-//thing.print();
 draw();
 

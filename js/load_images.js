@@ -10,3 +10,6 @@ iceberg.onload = function() {
 
 let pin = new Image();
 pin.src = PIN_PNG;
+
+let popup = new Image();
+popup.src = POPUP_PNG;
