@@ -16,25 +16,30 @@ canvas {
 
 .sidebar {
 	display: none;
+	flex-flow: column;
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 25%;
 	height: 100%;
 	background-color: rgba(0,0,0, 0.8);
-	border-left: 3px solid #000;
+	font-family: Verdana;
+	border-left: solid 5px #000;
+}
+
+#thumbnail {
+	width: 100%;
+	padding-top: 25px;
 }
 
 #title {
 	color: white;
+	padding-top: 0px;
 }
 
 #description {
 	color: white;
-}
-
-#time {
-	color: white;
+	padding: 25px;
 }
 
 .footer {
@@ -52,7 +57,7 @@ canvas {
 		1px  1px 0 #000;
 }
 
-.footer .onteia {
+.footer .credits {
 	color: pink;
 }
 .footer .heart {

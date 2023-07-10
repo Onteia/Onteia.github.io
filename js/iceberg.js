@@ -91,7 +91,7 @@ canvas.addEventListener('mousedown', (event) => {
 	};
 });
 
-canvas.addEventListener('mouseup', (event) => {
+window.addEventListener('mouseup', (event) => {
 	is_dragging = false;
 	let clicked_item = get_clicked_item(event.clientX, event.clientY);
 	if(clicked_item !== null) {
@@ -100,7 +100,7 @@ canvas.addEventListener('mouseup', (event) => {
 	}
 });
 
-canvas.addEventListener('mousemove', (event) => {
+window.addEventListener('mousemove', (event) => {
 	if(!is_dragging) return;
 	// drag iceberg around and stay in bounds
 	offset.x = event.clientX / zoom - drag_offset.x;

@@ -41,5 +41,5 @@ class IcebergItem {
 }
 
 // these are for testing purposes; generate icebergitems from csv instead
-let thing1 = new IcebergItem(new Item("thing one", "remember when aspect did this?? LULW IN CHAT", 1, "01/01/2022"));
-let thing2 = new IcebergItem(new Item("thing twoooo", null, null, null));
+let thing1 = new IcebergItem(new Item("sahyj_", "Promised an obscene amount of money to play contract during subathon, then called out Aspect for cheating (using HUD): \"You fuck !\"", 3, "https://i.imgur.com/E08hGYF.png"));
+//let thing2 = new IcebergItem(new Item("thing twoooo", null, null, null));
