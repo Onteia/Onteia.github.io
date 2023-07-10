@@ -14,15 +14,23 @@ class IcebergItem {
 		IcebergItem.items.push(this);
 	}
 
+	click() {
+		this.hide();
+		this.item.show();
+	}
+
 	hide() {
 		// only one item should be hidden at once
-		IcebergItem.unhide_all();
+		IcebergItem.hidden_items.forEach(item => item.hidden = false);
 		this.hidden = true;
 		IcebergItem.hidden_items.push(this);
 	}
 
 	static unhide_all() {
-		IcebergItem.hidden_items.forEach(item => item.hidden = false);
+		IcebergItem.hidden_items.forEach(item => {
+			item.hidden = false
+			Item.collapse();
+		});
 	}
 
 	print() {

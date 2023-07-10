@@ -19,19 +19,6 @@ let drag_offset = {x:0,y:0};
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-let iceberg_cached = new Image();
-iceberg_cached.src = ICEBERG_CACHED;
-
-let iceberg = new Image();
-iceberg.src = ICEBERG_JPG;
-let loaded = false;
-iceberg.onload = function() {
-	loaded = true;
-}
-
-let pin = new Image();
-pin.src = PIN_PNG;
-
 function draw() {
 	canvas.width = width = window.innerWidth;
 	canvas.height = height = window.innerHeight;
@@ -108,8 +95,6 @@ canvas.addEventListener('mouseup', (event) => {
 	if(clicked_item !== null) {
 		console.log(clicked_item);
 		clicked_item.hide();
-	} else {
-		IcebergItem.unhide_all();
 	}
 });
 
@@ -137,7 +122,12 @@ canvas.oncontextmenu = function(event) {
 }
 
 window.addEventListener('resize', ensure_in_bounds);
+window.addEventListener('keydown', (event) => {
+	const ESCAPE_KEY = 27;
+	if(event.keyCode === ESCAPE_KEY) {
+		IcebergItem.unhide_all();
+	}
+});
 
-//thing.print();
 draw();
 
