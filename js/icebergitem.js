@@ -29,7 +29,6 @@ class IcebergItem {
 	static unhide_all() {
 		IcebergItem.hidden_items.forEach(item => {
 			item.hidden = false
-			Item.collapse();
 		});
 	}
 
@@ -42,5 +41,5 @@ class IcebergItem {
 }
 
 // these are for testing purposes; generate icebergitems from csv instead
-let thing1 = new IcebergItem(new Item("thing one", null, null, null));
+let thing1 = new IcebergItem(new Item("thing one", "remember when aspect did this?? LULW IN CHAT", 1, "01/01/2022"));
 let thing2 = new IcebergItem(new Item("thing twoooo", null, null, null));

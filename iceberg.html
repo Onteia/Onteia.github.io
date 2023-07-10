@@ -3,14 +3,22 @@
 	<head>
 		<link rel="icon" type="image/x-icon" href="media/favicon.ico">
 		<link rel="stylesheet" href="css/iceberg.css">
+		<script type="text/javascript" src="js/file_defs.js"></script>
+		<script type="text/javascript" src="js/load_images.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 
 		<title>Aspecticor Iceberg</title>
 	</head>
 
-	<script type="text/javascript" src="js/file_defs.js"></script>
-	<script type="text/javascript" src="js/load_images.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
-	<canvas id="iceberg"></canvas>
+	<div class="container">
+		<canvas id="iceberg"></canvas>
+		<div class="separator"></div>
+		<div id="sidebar" class="sidebar">
+			<h1 id="title"></h1>
+			<h3 id="description"></h3>
+			<h6 id="time"></h6>
+		</div>
+	</div>
 	<script type="text/javascript" src="js/item.js"></script>
 	<script type="text/javascript" src="js/icebergitem.js"></script>
 	<script type="text/javascript" src="js/iceberg.js"></script>

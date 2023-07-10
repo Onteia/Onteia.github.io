@@ -19,6 +19,8 @@ let drag_offset = {x:0,y:0};
 let width = window.innerWidth;
 let height = window.innerHeight;
 
+let sidebar = document.getElementById('sidebar');
+
 function draw() {
 	canvas.width = width = window.innerWidth;
 	canvas.height = height = window.innerHeight;
@@ -93,8 +95,8 @@ canvas.addEventListener('mouseup', (event) => {
 	is_dragging = false;
 	let clicked_item = get_clicked_item(event.clientX, event.clientY);
 	if(clicked_item !== null) {
-		console.log(clicked_item);
-		clicked_item.hide();
+		clicked_item.click();
+		sidebar.style.display = 'block';
 	}
 });
 
@@ -126,6 +128,7 @@ window.addEventListener('keydown', (event) => {
 	const ESCAPE_KEY = 27;
 	if(event.keyCode === ESCAPE_KEY) {
 		IcebergItem.unhide_all();
+		sidebar.style.display = 'none';
 	}
 });
 
