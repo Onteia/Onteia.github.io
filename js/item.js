@@ -17,7 +17,6 @@ class Item {
 		description.textContent = this.description;
 		if(this.url.includes("youtu")) {
 			const player = document.getElementById('ytplayer');
-			console.log(this.url);
 			player.src = "";
 			if(this.url.includes("playlist")) {
 				player.src = "https://www.youtube.com/embed/videoseries?" + this.url.split('?')[1];

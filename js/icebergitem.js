@@ -28,7 +28,6 @@ class IcebergItem {
 			this.icon = pin_5;
 			this.position = {x: IcebergItem.rand_range(465, 592), y: IcebergItem.rand_range(761, 990)};
 		} else {
-			console.log(item);
 			throw new Error("Item needs a depth value");
 		}
 		IcebergItem.items.push(this);
