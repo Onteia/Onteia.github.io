@@ -45,6 +45,7 @@ canvas {
 #title {
 	color: white;
 	padding-top: 0px;
+	overflow-wrap: break-word;
 }
 
 #description {
