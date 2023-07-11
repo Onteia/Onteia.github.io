@@ -30,6 +30,24 @@ class IcebergItem {
 		IcebergItem.unload_media();
 		this.icon = pin_clicked;
 		this.item.show();
+		const sidebar = document.getElementById('sidebar');
+		let color = "0, 0, 0";
+		if(this.item.depth === 0) {
+			color = "253, 14, 138";
+		} else if(this.item.depth === 1) {
+			color = "214, 2, 112";
+		} else if(this.item.depth === 2) {
+			color = "179, 106, 174";
+		} else if(this.item.depth === 3) {
+			color = "155, 79, 150";
+		} else if(this.item.depth === 4) {
+			color = "0, 73, 219";
+		} else if(this.item.depth === 5) {
+			color = "0, 56, 168";
+		}
+
+		sidebar.style.borderLeft = "solid 5px rgb("+color+")";
+
 	}
 
 	static unload_media() {

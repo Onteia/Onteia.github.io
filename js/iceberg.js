@@ -1,7 +1,7 @@
 
-const ZOOM_START = 1.88;
+const ZOOM_START = 3.64;
 const SENS_START = 0.44;
-const OFFSET_START = {x:350,y:207.5};
+const OFFSET_START = {x:363,y:368.4};
 const MAX_ZOOM = 10;
 const MIN_ZOOM = 1;
 const PIN_SCALE = 1/7;
@@ -52,7 +52,6 @@ function draw() {
 	// draw the pins
 	IcebergItem.items.forEach(item => {
 		if(!item.hidden) {
-			console.log(item);
 			const pin = item.icon;
 			const pin_w = pin.width * PIN_SCALE/zoom;
 			const pin_h = pin.height * PIN_SCALE/zoom;
