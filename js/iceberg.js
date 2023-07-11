@@ -5,6 +5,7 @@ const OFFSET_START = {x:350,y:207.5};
 const MAX_ZOOM = 10;
 const MIN_ZOOM = 1;
 const PIN_SCALE = 1/7;
+const BANNER_SCALE = 1/10;
 
 const canvas = document.getElementById('iceberg');
 const ctx = canvas.getContext('2d');
@@ -42,10 +43,17 @@ function draw() {
 		requestAnimationFrame(draw);
 		return;
 	}
+	
+	// draw the banner
+	ctx.translate(480, 0);
+	ctx.drawImage(banner, 0, 0, banner.width, banner.height, 0, 0, banner.width * BANNER_SCALE, banner.height * BANNER_SCALE);
+	ctx.translate(-480, 0);
 
 	// draw the pins
 	IcebergItem.items.forEach(item => {
 		if(!item.hidden) {
+			console.log(item);
+			const pin = item.icon;
 			const pin_w = pin.width * PIN_SCALE/zoom;
 			const pin_h = pin.height * PIN_SCALE/zoom;
 			ctx.translate(item.position.x - pin_w/2, item.position.y - pin_h);
@@ -75,10 +83,10 @@ function get_clicked_item(mouse_x, mouse_y) {
 	const height = window.innerHeight;
 	const m_x = width/2 - offset.x - (width - 2*mouse_x) / (2*zoom);
 	const m_y = height/2 - offset.y - (height - 2*mouse_y) / (2*zoom);
-	let click_distance = pin.width/2 * PIN_SCALE/zoom;
+	let click_distance = pin_clicked.width/2 * PIN_SCALE/zoom;
 	let close_to = IcebergItem.items.filter(item => 
 		click_distance >= Math.abs(item.position.x - m_x) &&
-		click_distance >= Math.abs(item.position.y - m_y - (pin.height/2 * PIN_SCALE/zoom))
+		click_distance >= Math.abs(item.position.y - m_y - (pin_clicked.height/2 * PIN_SCALE/zoom))
 	);
 	return (close_to.length > 0) ? close_to[0] : null;
 }
@@ -130,14 +138,14 @@ window.addEventListener('resize', ensure_in_bounds);
 window.addEventListener('keydown', (event) => {
 	const ESCAPE_KEY = 27;
 	if(event.keyCode === ESCAPE_KEY) {
-		IcebergItem.unhide_all();
+		IcebergItem.unload_media();
 		sidebar.style.display = 'none';
 	}
 });
 
 let close_button = document.getElementById('close');
 close_button.addEventListener('click', () => {
-	IcebergItem.unhide_all();
+	IcebergItem.unload_media();
 	sidebar.style.display = 'none';
 });
 

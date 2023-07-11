@@ -25,6 +25,7 @@ canvas {
 	background-color: rgba(0,0,0, 0.8);
 	font-family: Verdana;
 	border-left: solid 5px #000;
+	overflow-y: scroll;
 }
 
 #close {
@@ -49,6 +50,11 @@ canvas {
 #description {
 	color: white;
 	padding: 25px;
+}
+
+#twtfallback {
+	color: white;
+	background-color: transparent;
 }
 
 .footer {

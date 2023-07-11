@@ -21,6 +21,10 @@ class Item {
 			player.src = "";
 			if(this.url.includes("playlist")) {
 				player.src = "https://www.youtube.com/embed/videoseries?" + this.url.split('?')[1];
+			} else if(this.url.includes("watch")) {
+				player.src = "https://www.youtube.com/embed/" + this.url.split('=')[1];
+			} else if(!this.url.includes("shorts")) {
+				player.src = "https://www.youtube.com/embed/" + this.url.split('/')[3];
 			} else {
 				player.src = "https://www.youtube.com/embed/" + this.url.split('/')[4];
 			}
@@ -38,8 +42,7 @@ class Item {
 			const player = document.getElementById('twitchplayer');
 			player.src = "https://clips.twitch.tv/embed?clip=" + this.url.split('/')[3] + "&parent=github.com&parent=onteia.github.io";
 			player.style.height = '18.56vw';
-		}
-		else {
+		} else if(this.url !== "") {
 			let img = document.getElementById('thumbnail');
 			img.src = this.url;
 		}
