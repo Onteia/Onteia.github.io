@@ -47,6 +47,8 @@ class IcebergItem {
 			twt.src = "";
 			twt.style.height = '0px';
 		}
+		const twtfallback = document.getElementById('twtfallback');
+		twtfallback.style.display = 'none';
 		const twitch = document.getElementById('twitchplayer');
 		if(twitch !== null) {
 			twitch.src = "";
@@ -74,5 +76,13 @@ let twt2 = new IcebergItem(new Item("Hitman Horse", "HITMAAAAAAAAAAAAAAAAAAN HOR
 
 
 let twitch = new IcebergItem(new Item("ALTF4", "Not to be confused with Super Alt F4, the program that Aspecticor uses to close Hitman Freelancer whenever he fails (L bozo), ALTF4 is a rage-inducing game where a clumsy knight traverses traps. Aspecticor streamed this at the beginning of his career, and to this day has not completed it, recently giving the outburst \"The creator of ALTF4 hasn't even completed the game, okay???\" The background music, entitled \"Round and Round,\" is said to trigger his PTSD to this day.", 5, "https://clips.twitch.tv/BelovedHorribleRabbitRickroll-F1NFa8ayNG5Ri0Qz"));
+
+
+let ytplaylist = new IcebergItem(new Item("Gamer Gauntlet", "", 1, "https://youtube.com/playlist?list=PL8hyRqs__Q8AWTEMtLcqjJEXkkrzmSDLH"));
+
+
+
+
+
 
 

@@ -17,11 +17,23 @@ class Item {
 		description.textContent = this.description;
 		if(this.url.includes("youtu")) {
 			const player = document.getElementById('ytplayer');
-			player.src = "https://www.youtube-nocookie.com/embed/" + this.url.split('/')[4];
+			console.log(this.url);
+			player.src = "";
+			if(this.url.includes("playlist")) {
+				player.src = "https://www.youtube.com/embed/videoseries?" + this.url.split('?')[1];
+			} else {
+				player.src = "https://www.youtube.com/embed/" + this.url.split('/')[4];
+			}
 			player.style.height = '18.56vw';
 		} else if(this.url.includes("twitter")) {
 			const player = document.getElementById('twitter-widget-0');
+			if(player !== null) {
 			player.src = "https://platform.twitter.com/embed/Tweet.html?theme=dark&id=" + this.url.split('/')[5];
+			} else {
+				const fallback = document.getElementById('twtfallback');
+				fallback.href = this.url;
+				fallback.style.display = 'block';
+			}
 		} else if(this.url.includes("twitch")) {
 			const player = document.getElementById('twitchplayer');
 			player.src = "https://clips.twitch.tv/embed?clip=" + this.url.split('/')[3] + "&parent=github.com&parent=onteia.github.io";
