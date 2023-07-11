@@ -91,13 +91,16 @@ canvas.addEventListener('mousedown', (event) => {
 	};
 });
 
-window.addEventListener('mouseup', (event) => {
-	is_dragging = false;
+canvas.addEventListener('mouseup', (event) => {
 	let clicked_item = get_clicked_item(event.clientX, event.clientY);
 	if(clicked_item !== null) {
 		clicked_item.click();
 		sidebar.style.display = 'block';
 	}
+});
+
+window.addEventListener('mouseup', (event) => {
+	is_dragging = false;
 });
 
 window.addEventListener('mousemove', (event) => {
@@ -130,6 +133,12 @@ window.addEventListener('keydown', (event) => {
 		IcebergItem.unhide_all();
 		sidebar.style.display = 'none';
 	}
+});
+
+let close_button = document.getElementById('close');
+close_button.addEventListener('click', () => {
+	IcebergItem.unhide_all();
+	sidebar.style.display = 'none';
 });
 
 draw();
