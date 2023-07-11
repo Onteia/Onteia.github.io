@@ -87,6 +87,7 @@ function get_clicked_item(mouse_x, mouse_y) {
 		click_distance >= Math.abs(item.position.x - m_x) &&
 		click_distance >= Math.abs(item.position.y - m_y - (pin_clicked.height/2 * PIN_SCALE/zoom))
 	);
+	console.log(m_x + ", " + m_y);
 	return (close_to.length > 0) ? close_to[0] : null;
 }
 

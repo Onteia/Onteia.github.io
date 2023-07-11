@@ -8,21 +8,27 @@ class IcebergItem {
 	constructor(item) {
 		if(typeof item !== "object") throw new Error("Item expected");
 		this.item = item;
-		this.position = {x: srand() * window.innerWidth, y: srand() * window.innerHeight};
+		//this.position = {x: srand() * window.innerWidth, y: srand() * window.innerHeight};
 		this.icon = pin_clicked;
 		if(item.depth === 0) {
 			this.icon = pin_0;
+			this.position = {x: IcebergItem.rand_range(426, 765), y: IcebergItem.rand_range(118, 218)};
 		} else if(item.depth === 1) {
 			this.icon = pin_1;
+			this.position = {x: IcebergItem.rand_range(445, 769), y: IcebergItem.rand_range(218, 320)};
 		} else if(item.depth === 2) {
 			this.icon = pin_2;
+			this.position = {x: IcebergItem.rand_range(419, 800), y: IcebergItem.rand_range(320, 455)};
 		} else if(item.depth === 3) {
 			this.icon = pin_3;
+			this.position = {x: IcebergItem.rand_range(378, 851), y: IcebergItem.rand_range(455, 600)};
 		} else if(item.depth === 4) {
 			this.icon = pin_4;
+			this.position = {x: IcebergItem.rand_range(380, 873), y: IcebergItem.rand_range(600, 761)};
 		} else if(item.depth === 5) {
 			this.icon = pin_5;
-		}
+			this.position = {x: IcebergItem.rand_range(465, 592), y: IcebergItem.rand_range(761, 990)};
+		} else throw new Error("Item needs a depth value");
 		IcebergItem.items.push(this);
 	}
 
@@ -48,6 +54,10 @@ class IcebergItem {
 
 		sidebar.style.borderLeft = "solid 5px rgb("+color+")";
 
+	}
+
+	static rand_range(low, high) {
+		return srand() * (high - low) + low; 
 	}
 
 	static unload_media() {
