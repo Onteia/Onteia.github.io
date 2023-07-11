@@ -15,7 +15,7 @@ canvas {
 }
 
 .sidebar {
-	display: none;
+	display: block;
 	flex-flow: column;
 	position: absolute;
 	top: 0;

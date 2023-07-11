@@ -24,7 +24,7 @@ class Item {
 			player.src = "https://platform.twitter.com/embed/Tweet.html?theme=dark&id=" + this.url.split('/')[5];
 		} else if(this.url.includes("twitch")) {
 			const player = document.getElementById('twitchplayer');
-			player.src = "https://clips.twitch.tv/embed?clip=" + this.url.split('/')[3] + "&parent=www.github.com&parent=www.onteia.github.io";
+			player.src = "https://clips.twitch.tv/embed?clip=" + this.url.split('/')[3] + "&parent=github.com&parent=onteia.github.io";
 			player.style.height = '18.56vw';
 		}
 		else {
