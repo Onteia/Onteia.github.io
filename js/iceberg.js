@@ -89,35 +89,48 @@ function get_clicked_item(mouse_x, mouse_y) {
 	);
 	return (close_to.length > 0) ? close_to[0] : null;
 }
-
-canvas.addEventListener('mousedown', (event) => {
+const canvasMousedown = (event) => {
+	// get coords from mouse or touch
+	const clientX = event.clientX || event.targetTouches[0].pageX;
+	const clientY = event.clientY || event.targetTouches[0].pageY;
 	is_dragging = true;
 	drag_offset = {
-		x: event.clientX / zoom - offset.x,
-		y: event.clientY / zoom - offset.y,
+		x: clientX / zoom - offset.x,
+		y: clientY / zoom - offset.y,
 	};
-});
+}
+canvas.addEventListener('mousedown', canvasMousedown);
+canvas.addEventListener('touchstart', canvasMousedown);
 
-canvas.addEventListener('mouseup', (event) => {
+const canvasMouseup = (event) => {
 	let clicked_item = get_clicked_item(event.clientX, event.clientY);
 	if(clicked_item !== null) {
 		clicked_item.click();
 		sidebar.style.display = 'block';
 	}
-});
+}
+canvas.addEventListener('mouseup', canvasMouseup);
+canvas.addEventListener('touchend', canvasMouseup);
 
-window.addEventListener('mouseup', (event) => {
+const windowMouseup = (event) => {
 	is_dragging = false;
-});
+}
+window.addEventListener('mouseup', windowMouseup);
+window.addEventListener('touchend', windowMouseup);
 
-window.addEventListener('mousemove', (event) => {
+const windowMousemove = (event) => {
 	if(!is_dragging) return;
+	// get coords from mouse or touch
+	const clientX = event.clientX || event.targetTouches[0].pageX;
+	const clientY = event.clientY || event.targetTouches[0].pageY;
 	// drag iceberg around and stay in bounds
-	offset.x = event.clientX / zoom - drag_offset.x;
-	offset.y = event.clientY / zoom - drag_offset.y;
+	offset.x = clientX / zoom - drag_offset.x;
+	offset.y = clientY / zoom - drag_offset.y;
 	ensure_in_bounds();
 	return;
-});
+}
+window.addEventListener('mousemove', windowMousemove);
+window.addEventListener('touchmove', windowMousemove);
 
 canvas.addEventListener('wheel', (event) => {
 	event.preventDefault();
