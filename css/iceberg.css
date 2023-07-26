@@ -1,3 +1,8 @@
+/* prevents "pull down to refresh" on touch devices */
+html,
+body {
+    overscroll-behavior-y: contain;
+}
 
 body {
 	margin: 0;
